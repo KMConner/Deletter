@@ -12,3 +12,65 @@ CREATE TABLE status (
   mention_count         INTEGER NOT NULL, -- The number of user mentions  this tweet contains.
   media_count           INTEGER NOT NULL -- The number of media entities  this tweet contains.
 );
+
+CREATE TABLE user (
+  id                            INTEGER NOT NULL PRIMARY KEY,
+  name                          TEXT,
+  profile_image_url             TEXT,
+  profile_image_path            TEXT,
+  profile_background_image_url  TEXT,
+  profile_background_image_path TEXT,
+  description                   TEXT,
+  created_at                    TEXT    NOT NULL,
+  protected                     INTEGER,
+  screen_name                   TEXT    NOT NULL,
+  url                           TEXT,
+  location                      TEXT,
+  updated_at                    TEXT    NOT NULL
+);
+
+CREATE TABLE url (
+  id           INTEGER PRIMARY KEY,
+  status_id    INTEGER NOT NULL,
+  display_url  TEXT    NOT NULL,
+  expanded_url TEXT    NOT NULL,
+  url          TEXT    NOT NULL,
+  start        INTEGER NOT NULL,
+  end          INTEGER NOT NULL
+);
+
+CREATE TABLE old_user (
+  id                            INTEGER NOT NULL PRIMARY KEY,
+  user_id                       INTEGER NOT NULL,
+  name                          TEXT    NOT NULL,
+  profile_image_path            TEXT,
+  profile_background_image_path TEXT,
+  description                   TEXT,
+  created_at                    TEXT    NOT NULL,
+  protected                     INTEGER,
+  screen_name                   TEXT    NOT NULL,
+  url                           TEXT,
+  location                      TEXT,
+  updated_at                    TEXT    NOT NULL
+);
+
+CREATE TABLE media (
+  id           INTEGER PRIMARY KEY,
+  status_id    INTEGER NOT NULL,
+  media_url    TEXT    NOT NULL,
+  url          TEXT    NOT NULL,
+  display_url  TEXT    NOT NULL,
+  expanded_url TEXT    NOT NULL,
+  type         TEXT    NOT NULL,
+  local_path   TEXT    NOT NULL,
+  start        INTEGER NOT NULL,
+  end          INTEGER NOT NULL
+);
+
+CREATE TABLE hashtag (
+  id        INTEGER PRIMARY KEY,
+  status_id INTEGER NOT NULL,
+  text      TEXT    NOT NULL,
+  start     INTEGER NOT NULL,
+  end       INTEGER NOT NULL
+);
