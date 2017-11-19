@@ -74,3 +74,10 @@ CREATE TABLE hashtag (
   start     INTEGER NOT NULL,
   end       INTEGER NOT NULL
 );
+
+CREATE TABLE delete_status (
+  id               INTEGER PRIMARY KEY,
+  delete_timestamp INTEGER NOT NULL,
+  status_id        INTEGER NOT NULL,
+  user_id          INTEGER NOT NULL
+);

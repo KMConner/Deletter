@@ -5,6 +5,7 @@ import deletter.sqlJobs.AddUserJob
 import deletter.sqlJobs.DeleteStatusJob
 import twitter4j.*
 import java.lang.Exception
+import java.util.*
 
 class MyUserStreamListener : UserStreamAdapter() {
 
@@ -120,7 +121,7 @@ class MyUserStreamListener : UserStreamAdapter() {
             logger.warn("statusDeletionNotice is null.")
             return
         }
-        defaultWriter.addJob(DeleteStatusJob(statusDeletionNotice.statusId))
+        defaultWriter.addJob(DeleteStatusJob(statusDeletionNotice,System.currentTimeMillis()))
     }
 
     override fun onScrubGeo(userId: Long, upToStatusId: Long) {}
